@@ -1,4 +1,5 @@
 import string
+import time
 
 def generate_combinations(length, charset, prefix=""):
     if length == 0:
@@ -8,6 +9,9 @@ def generate_combinations(length, charset, prefix=""):
             yield from generate_combinations(length - 1, charset, prefix + char)
 
 def main():
+
+    start_time = time.time()#Registro del tiempo de inicio
+
     # Crear un archivo de texto
     with open("wordsCombination.txt", "w") as file:
         # Crear una lista con las letras del abecedario y los dígitos numéricos
@@ -24,5 +28,8 @@ def main():
         for combination in combinations:
             # Escribir la cadena en el archivo
             file.write(combination + "\n")
+    end_time = time.time()
+    elapsed_time = end_time-start_time
+    print("Tiempo transcurrido: ",elapsed_time, "segundos")
 
 main()
